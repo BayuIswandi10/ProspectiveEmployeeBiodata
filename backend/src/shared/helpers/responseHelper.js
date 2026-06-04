@@ -1,0 +1,39 @@
+/**
+ * Build paginated response object
+ */
+const paginate = (data, total, page, limit) => {
+  return {
+    data,
+    pagination: {
+      total,
+      page: parseInt(page),
+      limit: parseInt(limit),
+      totalPages: Math.ceil(total / limit),
+    },
+  };
+};
+
+/**
+ * Build success response
+ */
+const successResponse = (res, data, message = 'Success', statusCode = 200) => {
+  return res.status(statusCode).json({
+    success: true,
+    message,
+    data,
+  });
+};
+
+/**
+ * Build error response
+ */
+const errorResponse = (res, message = 'Error', statusCode = 500, errors = null) => {
+  const response = {
+    success: false,
+    message,
+  };
+  if (errors) response.errors = errors;
+  return res.status(statusCode).json(response);
+};
+
+module.exports = { paginate, successResponse, errorResponse };
