@@ -2,7 +2,7 @@ const sql = require('mssql/msnodesqlv8');
 const logger = require('../logging/logger');
 
 const config = {
-  connectionString: 'Driver={ODBC Driver 17 for SQL Server};Server=Mobile-17\\SQL2019;Database=ProspectiveEmployeeBiodata;Trusted_Connection=yes;'
+  connectionString: process.env.DB_CONNECTION_STRING || 'Driver={ODBC Driver 17 for SQL Server};Server=Mobile-17\\SQL2019;Database=ProspectiveEmployeeBiodata;Trusted_Connection=yes;'
 };
 
 const poolPromise = new sql.ConnectionPool(config)

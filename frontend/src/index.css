@@ -170,6 +170,11 @@ body {
   vertical-align: middle;
 }
 
+.dynamic-table input, 
+.dynamic-table select {
+  min-width: 130px;
+}
+
 .btn-add-row {
   font-size: 0.85rem;
   font-weight: 500;
